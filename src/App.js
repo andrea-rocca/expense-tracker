@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ExpenseItem from './components/Expenses/ExpenseItem';
-import Card from './components/UI/Card';
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
 
 class App extends Component {
 
@@ -34,20 +34,16 @@ class App extends Component {
       }
     ];
 
+    const addExpenseHandler = (expense) => {
+        console.log( expense );
+    };
+
     return (
-      <Card className="App expenses">
-          <h2>EXP TRACKER</h2>
-          <ExpenseItem 
-              title={expenses[0].title} 
-              amount={expenses[0].amount} 
-              date={expenses[0].date}>
-          </ExpenseItem>
-          <ExpenseItem 
-              title={expenses[1].title} 
-              amount={expenses[1].amount} 
-              date={expenses[1].date}>
-          </ExpenseItem>
-      </Card>
+      <div className="App">
+        <h2>EXPENSES TRACKER</h2>
+        <NewExpense onExpenseAdded={addExpenseHandler} />
+        <Expenses items={expenses} />
+      </div>
     );
   }
 }
